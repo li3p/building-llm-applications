@@ -1,0 +1,121 @@
+[project]
+name = "building-llm-applications"
+version = "0.1.0"
+requires-python = ">=3.14,<3.15"
+dependencies = []
+
+[tool.uv]
+package = false
+default-groups = []
+
+[dependency-groups]
+notebook = [
+    "notebook>=7.5.6",
+]
+openai-sdk = [
+    "openai>=2.36.0",
+]
+langchain-base = [
+    "langchain>=1.3.0",
+    "langchain-openai>=1.2.1",
+]
+langchain-community-stack = [
+    { include-group = "langchain-base" },
+    "langchain-community>=0.4.1",
+]
+document-loaders = [
+    "docx2txt>=0.9",
+    "pypdf>=6.11.0",
+    "wikipedia>=1.4.0",
+]
+web-search = [
+    "beautifulsoup4>=4.14.3",
+    "ddgs>=9.14.4",
+    "duckduckgo-search>=8.1.1",
+    "requests>=2.34.2",
+]
+rag = [
+    "chromadb>=1.5.9",
+    "langchain-chroma>=1.1.0",
+]
+advanced-rag = [
+    { include-group = "rag" },
+    "html2text>=2025.4.15",
+    "langchain-classic>=1.0.7",
+    "langchain-text-splitters>=1.1.2",
+    "lark>=1.3.1",
+    "lxml>=6.1.0",
+]
+ape = [
+    { include-group = "notebook" },
+    { include-group = "openai-sdk" },
+    "langchain-openai>=1.2.1",
+]
+ch01 = [
+    { include-group = "notebook" },
+    { include-group = "langchain-base" },
+]
+ch02 = [
+    { include-group = "notebook" },
+    { include-group = "langchain-base" },
+    { include-group = "openai-sdk" },
+]
+ch03 = [
+    { include-group = "notebook" },
+    { include-group = "langchain-community-stack" },
+    { include-group = "document-loaders" },
+    "langchain-text-splitters>=1.1.2",
+    "tiktoken>=0.13.0",
+]
+ch04 = [
+    { include-group = "langchain-community-stack" },
+    { include-group = "web-search" },
+    "python-dotenv>=1.2.2",
+]
+ch05 = [
+    { include-group = "langchain-community-stack" },
+    { include-group = "web-search" },
+    "langgraph>=1.2.0",
+    "python-dotenv>=1.2.2",
+]
+ch06 = [
+    { include-group = "notebook" },
+    { include-group = "openai-sdk" },
+    "chromadb>=1.5.9",
+]
+ch07 = [
+    { include-group = "notebook" },
+    { include-group = "openai-sdk" },
+    { include-group = "langchain-community-stack" },
+    { include-group = "document-loaders" },
+    { include-group = "rag" },
+    "langchain-text-splitters>=1.1.2",
+]
+ch08 = [
+    { include-group = "notebook" },
+    { include-group = "langchain-community-stack" },
+    { include-group = "advanced-rag" },
+]
+ch09 = [
+    { include-group = "notebook" },
+    { include-group = "langchain-community-stack" },
+    { include-group = "advanced-rag" },
+]
+ch10 = [
+    { include-group = "notebook" },
+    { include-group = "langchain-community-stack" },
+    { include-group = "advanced-rag" },
+]
+ch11 = [
+    { include-group = "langchain-community-stack" },
+    { include-group = "advanced-rag" },
+    "aiohttp>=3.13.5",
+    "beautifulsoup4>=4.14.3",
+    "fastmcp>=3.3.0",
+    "html2text>=2025.4.15",
+    "langchain-mcp-adapters>=0.2.2",
+    "langgraph>=1.2.0",
+    "langgraph-supervisor>=0.0.31",
+    "python-dotenv>=1.2.2",
+    "tiktoken>=0.13.0",
+]
