@@ -97,6 +97,11 @@ ch05/__pycache__/
 ch05/agents/__pycache__/
 ch05/utils/__pycache__/
 
+__pycache__/
+.venv/
+.venv-*/
+.venv-uv-groups/
+
 .idea
 /ch04/.env
 /ch05/.env
