@@ -12,9 +12,8 @@ CHAPTER_ENV_FILE = Path(__file__).with_name(".env")
 def _load_config() -> dict[str, str]:
     config: dict[str, str] = {}
     for env_file in (ROOT_ENV_FILE, CHAPTER_ENV_FILE):
-        config.update(
-            {key: value for key, value in dotenv_values(env_file).items() if value}
-        )
+        values = dotenv_values(env_file)
+        config.update({key: value for key, value in values.items() if value})
     config.update(os.environ)
     return config
 
@@ -33,7 +32,8 @@ def _required_env(name: str) -> str:
 
 def get_llm():
     return ChatOpenAI(
-        openai_api_key=_required_env("OPENAI_API_KEY"),
+        api_key=_required_env("OPENAI_API_KEY"),
+        base_url=CONFIG.get("OPENAI_BASE_URL"),
         model=CONFIG.get("OPENAI_MODEL", "gpt-5-nano"),
         temperature=float(CONFIG.get("OPENAI_TEMPERATURE", "1")),
     )

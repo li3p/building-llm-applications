@@ -13,21 +13,20 @@ It relies on a **single tool** (`search_travel_info`) and the standard pre-built
 
 ---
 
-## Setup (PowerShell)
+## Setup
 
-```powershell
-# 1 · Virtual environment
-python -m venv env_ch12
-.\env_ch12\Scripts\Activate.ps1
+Dependencies are managed with `uv` at the repository root. See
+[`docs/uv.md`](../docs/uv.md) for the full workflow.
 
-# 2 · Dependencies
-pip install -r requirements.txt
+```bash
+# 1 · Install the ch11 dependency group
+uv sync --locked --only-group ch11
 
-# 3 · OpenAI key (session-only)
-$Env:OPENAI_API_KEY = "sk-..."
+# 2 · OpenAI key (session-only)
+export OPENAI_API_KEY="sk-..."
 
-# 4 · Run
-python main.py
+# 3 · Run
+uv run --locked --only-group ch11 python ch11/main.py
 ```
 
 ---
