@@ -5,10 +5,18 @@ import os
 
 load_dotenv()
 openai_api_key = os.getenv("OPENAI_API_KEY")
+openai_base_url = os.getenv("OPENAI_BASE_URL") or os.getenv("OPENAI_API_BASE")
+openai_model = os.getenv("OPENAI_MODEL", "gpt-5-nano")
 
 def get_llm():
-    return ChatOpenAI(openai_api_key=openai_api_key,
-                 model_name="gpt-5-nano")
+    kwargs = {
+        "openai_api_key": openai_api_key,
+        "model_name": openai_model,
+    }
+    if openai_base_url:
+        kwargs["openai_api_base"] = openai_base_url
+
+    return ChatOpenAI(**kwargs)
 
 # Define typed dictionaries for state handling
 class AssistantInfo(TypedDict):
