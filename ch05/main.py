@@ -3,10 +3,10 @@ from langgraph.graph import StateGraph, END
 from typing import TypedDict, Dict, Any, List, Annotated, Tuple
 import os
 
-from models import ResearchState
-from agents.assistant_selector import select_assistant
-from agents.web_researcher import generate_search_queries, perform_web_searches, summarize_search_results, evaluate_search_relevance
-from agents.report_writer import write_research_report
+from ch05.models import ResearchState
+from ch05.agents.assistant_selector import select_assistant
+from ch05.agents.web_researcher import generate_search_queries, perform_web_searches, summarize_search_results, evaluate_search_relevance
+from ch05.agents.report_writer import write_research_report
 
 def create_research_graph() -> StateGraph:
     """
@@ -74,12 +74,13 @@ def create_research_graph() -> StateGraph:
     
     return graph
 
-def run_research(question: str) -> str:
+def run_research(question: str, target_language: Optional[str] = None) -> str:
     """
     Run the research graph with a user question.
     
     Args:
         question: The user's research question
+        target_language: Optional output language (e.g. 'Chinese', 'English')
         
     Returns:
         The final research report
@@ -93,6 +94,7 @@ def run_research(question: str) -> str:
     # Initialize the state
     initial_state = {
         "user_question": question,
+        "target_language": target_language,
         "assistant_info": None,
         "search_queries": None,
         "search_results": None,
@@ -110,6 +112,8 @@ def run_research(question: str) -> str:
     
     # Extract and return the final report
     return result["final_report"]
+
+graph = create_research_graph().compile()
 
 # For testing purposes
 if __name__ == "__main__":

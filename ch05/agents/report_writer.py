@@ -1,5 +1,5 @@
-from models import get_llm
-from prompts import RESEARCH_REPORT_PROMPT_TEMPLATE
+from ch05.models import get_llm
+from ch05.prompts import RESEARCH_REPORT_PROMPT_TEMPLATE
 from typing import Dict, Any
 
 def write_research_report(state: Dict[str, Any]) -> Dict[str, Any]:
@@ -8,11 +8,13 @@ def write_research_report(state: Dict[str, Any]) -> Dict[str, Any]:
     """
     research_summary = state["research_summary"]
     user_question = state["user_question"]
+    target_language = state.get("target_language") or "the same language as the user question (default to Simplified Chinese 简体中文)"
     
     # Format the prompt
     prompt = RESEARCH_REPORT_PROMPT_TEMPLATE.format(
         research_summary=research_summary,
-        user_question=user_question
+        user_question=user_question,
+        target_language=target_language
     )
     
     # Get the LLM response

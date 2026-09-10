@@ -1,7 +1,7 @@
-from models import get_llm, SearchQuery, SearchResult, SearchSummary
-from prompts import WEB_SEARCH_PROMPT_TEMPLATE, SUMMARY_PROMPT_TEMPLATE
-from utils.web_searching import web_search
-from utils.web_scraping import web_scrape
+from ch05.models import get_llm, SearchQuery, SearchResult, SearchSummary
+from ch05.prompts import WEB_SEARCH_PROMPT_TEMPLATE, SUMMARY_PROMPT_TEMPLATE
+from ch05.utils.web_searching import web_search
+from ch05.utils.web_scraping import web_scrape
 import json
 from typing import Dict, Any, List
 
@@ -238,11 +238,11 @@ def summarize_search_results(state: Dict[str, Any]) -> Dict[str, Any]:
                 
                 -----------
                 
-                Using the above text, answer in short the following question.
+                Using the above text, answer in short the following question in Chinese (简体中文).
                 Question: {search_query}
                 
                 -----------
-                If you cannot answer the question above using the text provided above, then just summarize the text. 
+                If you cannot answer the question above using the text provided above, then just summarize the text in Chinese. 
                 Include all factual information, numbers, stats etc if available.
                 
                 Note that this is a fallback source, so it might not directly address the question.

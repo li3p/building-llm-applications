@@ -54,6 +54,7 @@ WEB_SEARCH_INSTRUCTIONS = """
 
 Write {num_search_queries} web search queries to gather as much information as possible 
 on the following question: {user_question}. Your objective is to write a report based on the information you find.
+If the question is in Chinese, generate search queries in Chinese (or a suitable combination of Chinese and professional domain terminology) to find the most relevant information.
 You must respond with a list of queries such as query1, query2, query3 in the following format: 
 [
     {{"search_query": "query1", "user_question": "{user_question}" }},
@@ -73,11 +74,11 @@ Text: {search_result_text}
 
 -----------
 
-Using the above text, answer in short the following question.
+Using the above text, answer in short the following question in Chinese (简体中文).
 Question: {search_query}
  
 -----------
-If you cannot answer the question above using the text provided above, then just summarize the text. 
+If you cannot answer the question above using the text provided above, then just summarize the text in Chinese. 
 Include all factual information, numbers, stats etc if available.
 """
 
@@ -95,16 +96,16 @@ Information:
 {research_summary}
 --------
 
-Using the above information, answer the following question or topic: "{user_question}" in a detailed report -- \
-The report should focus on the answer to the question, should be well structured, informative, \
-in depth, with facts and numbers if available and a minimum of 1,200 words.
+Using the above information, answer the following question or topic: "{user_question}" in a detailed report.
 
-You should strive to write the report as long as you can using all relevant and necessary information provided.
-You must write the report with markdown syntax.
-You MUST determine your own concrete and valid opinion based on the given information. Do NOT deter to general and meaningless conclusions.
-Write all used source urls at the end of the report, and make sure to not add duplicated sources, but only one reference for each.
-You must write the report in apa format.
-Please do your best, this is very important to my career.""" 
+CRITICAL LANGUAGE & FORMAT REQUIREMENTS:
+- You MUST write the entire report in fluent, professional, and well-structured {target_language}, regardless of whether the source material is in English or other languages.
+- The report should focus on answering the question directly, with clear structure, in-depth analysis, logical reasoning, and concrete facts/figures if available.
+- Length requirement: Aim for a comprehensive and thorough report (at least 1,500 words/characters).
+- Use Markdown syntax with clear headings (#, ##, ###), bullet points, and emphasis where appropriate.
+- You MUST formulate your own concrete, rigorous, and valid analytical conclusions based on the provided information. Do NOT fall back on vague or empty generalities.
+- List all unique source URLs at the end of the report under a References / 参考来源 section.
+- Please do your best, this is very important to my career."""
 
 RESEARCH_REPORT_PROMPT_TEMPLATE = PromptTemplate.from_template(
     template=RESEARCH_REPORT_INSTRUCTIONS

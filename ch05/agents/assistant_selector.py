@@ -1,5 +1,5 @@
-from models import get_llm, AssistantInfo
-from prompts import ASSISTANT_SELECTION_PROMPT_TEMPLATE
+from ch05.models import get_llm, AssistantInfo
+from ch05.prompts import ASSISTANT_SELECTION_PROMPT_TEMPLATE
 from langchain_core.output_parsers import StrOutputParser
 import json
 from typing import Dict, Any
