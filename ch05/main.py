@@ -1,6 +1,6 @@
 from langchain_core.tools import tool
 from langgraph.graph import StateGraph, END
-from typing import TypedDict, Dict, Any, List, Annotated, Tuple
+from typing import TypedDict, Dict, Any, List, Annotated, Tuple, Optional
 import os
 
 from ch05.models import ResearchState
