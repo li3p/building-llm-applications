@@ -67,6 +67,23 @@ uv run --locked --only-group ch08 jupyter lab ch08/08-advanced_indexing.ipynb
 Set `OPENAI_API_KEY` (and any other chapter-specific keys) either in your
 shell or in a chapter-local `.env` — see `chXX/.env_example` where provided.
 
+## Visualizing & Debugging with LangGraph Studio (`langgraph dev`)
+
+For chapters that use LangGraph (such as `ch05` and `ch11`), you can run the local development server and inspect graphs via **LangGraph Studio**:
+
+1. Install chapter dependencies and the in-memory development runtime:
+   ```bash
+   uv sync --locked --only-group ch05
+   uv pip install "langgraph-cli[inmem]"
+   ```
+2. Launch the local development server:
+   ```bash
+   ./.venv/bin/langgraph dev
+   # Or with an activated .venv:
+   langgraph dev
+   ```
+3. Follow the generated Studio UI URL in the terminal (e.g. `https://smith.langchain.com/studio/?baseUrl=http://127.0.0.1:2024`) to visualize node state, stream steps, and interact with the agent in real time.
+
 ## Working with dependency groups
 
 * Look up which group you need in `pyproject.toml` under

@@ -1,0 +1,16 @@
+{
+  "dependencies": [
+    "langchain>=1.3.0",
+    "langchain-community>=0.4.1",
+    "langchain-openai>=1.2.1",
+    "langgraph>=1.2.0",
+    "beautifulsoup4>=4.14.3",
+    "duckduckgo-search>=8.1.1",
+    "requests>=2.34.2",
+    "python-dotenv>=1.2.2"
+  ],
+  "graphs": {
+    "research_agent": "./ch05/main.py:graph"
+  },
+  "env": ".env"
+}
