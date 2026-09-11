@@ -1,5 +1,5 @@
-from llm_models import get_llm
-from prompts import (
+from ch04.llm_models import get_llm
+from ch04.prompts import (
     ASSISTANT_SELECTION_PROMPT_TEMPLATE, 
 )
 
